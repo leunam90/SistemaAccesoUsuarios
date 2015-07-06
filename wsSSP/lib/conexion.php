@@ -1,5 +1,5 @@
 <?php
-//Version. 1.0. 2015.
+//Version. 1.0. 2015. Secretaria de Seguridad Pública del Estado de Yucatán. Departamento de Desarrollo de Software. Copyright 2015.
 class Conexion {
 
     private $servidor;
@@ -12,7 +12,7 @@ class Conexion {
     public function __construct() {
         $this->servidor = "localhost";
         $this->usuario = "root";
-        $this->password = "1234565"; //"srv.D3m01";
+        $this->password = "123456"; //"srv.D3m01";
         $this->baseDatos = "db_ssp_users";
     }
 
@@ -99,6 +99,21 @@ class Conexion {
         //echo "$fileName";
         $f = fopen("logs/$fileName.TXT", "a");
         fputs($f, $cadena . "\r\n") or die("no se pudo crear o insertar el fichero");
+        fclose($f);
+    }
+    
+    function generaErrorLog($error)
+    {
+        ini_set('date.timezone', 'America/Mexico_City');
+        $fecha = date("Y-m-d");
+        $hora = str_pad(date("H:i:s"), 10, " ");
+        $errorMessage = strtoupper(str_pad($error, 15, " "));
+        $message = $fecha." ".$hora.": Se genero el error: " . $errorMessage;
+        $prefijo = "logError";
+        $date = date("Ymd");
+        $fileName = $prefijo.$date;
+        $f = fopen("logs/$fileName.TXT", "a");
+        fputs($f, $message . "\r\n") or die("No se pudo crear el archivo");
         fclose($f);
     }
 

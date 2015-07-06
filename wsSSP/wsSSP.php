@@ -1,5 +1,5 @@
 <?php
-//Version 1.0. 2015
+//Version 1.0. 2015. Secretaria de Seguridad Pública del Estado de Yucatán. Departamento de Desarrollo de Software. Copyright 2015.
     //---Librerias---
     require 'wsFunctions.php';
     require 'lib/nusoap.php';
